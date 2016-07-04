@@ -732,8 +732,7 @@ showCard(Pair('X', '♠'));
 
 To define an enumerated type one must provide:
 
-  - an array of values with distinct [`R.toString`][R.toString]
-    representations.
+  - an array of distinct values.
 
 ```haskell
 EnumType :: Array Any -> Type
@@ -987,9 +986,12 @@ The solution is to constrain `a` by first defining a `TypeClass` value, then
 specifying the constraint in the definition of the "concat" function:
 
 ```javascript
+const Z = require('sanctuary-type-classes');
+
 //    Semigroup :: TypeClass
-const Semigroup = $.TypeClass(
+const Semigroup = Z.TypeClass(
   'my-package/Semigroup',
+  [],
   x => x != null && typeof x.concat === 'function'
 );
 
@@ -1029,7 +1031,6 @@ Multiple constraints may be placed on a type variable by including multiple
 
 [FL:Semigroup]:     https://github.com/fantasyland/fantasy-land#semigroup
 [Object.create]:    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
-[R.toString]:       http://ramdajs.com/docs/#toString
 [SyntaxError]:      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError
 [TypeError]:        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError
 [arguments]:        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments
